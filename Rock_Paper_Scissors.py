@@ -41,59 +41,61 @@ game_choices = ["rock", "paper", "scissors"]
 
 while player_score < 3 and computer_score < 3:
     print("\nRock, Paper, Scissors, SHOOT!")
+    
 
 # Player's selection
 
-player_choice = ''
-while player_choice not in game_choice:
-    player_choice = input(f"{name} (rock, paper, or scissors): ").lower()
-    print(f"{name}, that’s not how the game works. Try again.")
-        
+    player_choice = ''
+    while player_choice not in game_choices:
+        player_choice = input(f"{name} (rock, paper, or scissors): ").lower()
+        if player_choice not in game_choices:
+            print(f"{name}, that’s not how the game works. Try again.")
+            
 
-computer_choice = random.choice(game_choices)
-print(f"\n{name} chose: {player_choice}, I chose: {computer_choice}. \n")
+    computer_choice = random.choice(game_choices)
+    print(f"\n{name} chose: {player_choice}, I chose: {computer_choice}. \n")
 
 # Element relations
 
-if player_choice == computer_choice:
-    tie_statement = ["Get out of my head!", 
-                    "Bet you can't do that again...", 
-                    "Twins!!!"]
-    print(random.choice(tie_statement))
+    if player_choice == computer_choice:
+        tie_statement = ["Get out of my head!", 
+                        "Bet you can't do that again...", 
+                        "Twins!!!"]
+        print(random.choice(tie_statement))
 
-elif (player_choice == "rock" and computer_choice == "scissors") or\
-    (player_choice == "scissors" and computer_choice == "paper") or\
-    (player_choice == "paper" and computer_choice == "rock"):
-    win_reactions = {
-        "rock": ["...You win this round", 
-                "So you're the Hulk now?", 
-                "Rock crushes....I should have picked paper."],
-        "scissors": ["OUCH!",
-                    "Call me confetti",
-                    "Good job."],
-        "paper": ["Stick a bow on me, cause you wrapped me up",
-                "You earned that one",
-                "You've been practicing, haven't you?...Don't answer that"]
-    }
-    print(random.choice(win_reactions[player_choice]))
-    player_score += 1
-else:
-    lose_reactions = {
-        "rock": ["I cover yoooouuu!",
-                "Paper for the win!",
-                f"Point {computer}"],
-        "scissors": ["Smash",
-                    "Give me a point",
-                    "Back to the drawing board for you."],
-        "paper": ["You did not make the...CUT!",
-                "HA! Try again.",
-                "Like a hot knife through butter"]
-    }
-    print(random.choice(lose_reactions[player_choice]))
-    computer_score += 1
+    elif (player_choice == "rock" and computer_choice == "scissors") or\
+        (player_choice == "scissors" and computer_choice == "paper") or\
+        (player_choice == "paper" and computer_choice == "rock"):
+        win_reactions = {
+            "rock": ["...You win this round", 
+                    "So you're the Hulk now?", 
+                    "Rock crushes....I should have picked paper."],
+            "scissors": ["OUCH!",
+                        "Call me confetti",
+                        "Good job."],
+            "paper": ["Stick a bow on me, cause you wrapped me up",
+                    "You earned that one",
+                    "You've been practicing, haven't you?...Don't answer that"]
+        }
+        print(random.choice(win_reactions[player_choice]))
+        player_score += 1
+    else:
+        lose_reactions = {
+            "rock": ["I cover yoooouuu!",
+                    "Paper for the win!",
+                    f"Point {computer}"],
+            "scissors": ["Smash",
+                        "Give me a point",
+                        "Back to the drawing board for you."],
+            "paper": ["You did not make the...CUT!",
+                    "HA! Try again.",
+                    "Like a hot knife through butter"]
+        }
+        print(random.choice(lose_reactions[player_choice]))
+        computer_score += 1
 
 # Score Display
-print(f"{name} score: {player_score} | {computer} score: {computer_score}")
+    print(f"{name} score: {player_score} | {computer} score: {computer_score}")
                 
 # Keeping Score
 
@@ -106,10 +108,10 @@ elif (player_choice == "rock" and computer_choice == "scissors") or \
 else:
     result = "computer_choice"
 
-if result == "player_choice":
-    player_score += 1
-elif result == "computer_choice":
-    computer_score += 1
+    if result == "player_choice":
+        player_score += 1
+    elif result == "computer_choice":
+        computer_score += 1
 print(f"{name} score: {player_score} | {computer} score: {computer_score}")
 
 # Outcome
